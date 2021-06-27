@@ -378,7 +378,6 @@ AddEventHandler("ZombieSync", function()
 			SetCanAttackFriendly(entity, true, true)
 			SetPedCanEvasiveDive(entity, false)
 			SetPedRelationshipGroupHash(entity, GetHashKey("zombie"))
-			SetPlayerMeleeWeaponDamageModifier(entity, 100)
 			SetPedCombatAbility(entity, 0)
 			SetPedCombatRange(entity,0)
 			SetPedCombatMovement(entity, 0)
@@ -437,9 +436,9 @@ Citizen.CreateThread(function()
 			for j, player in pairs(players) do
 				local playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(player), true))
 				local distance = GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(player)), GetEntityCoords(entity), true)
-				if distance <= 25.0 then
+				if distance <= Config.ZombieDetectRange then
 					--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, -1, 0,0)
-					TaskGoToEntity(entity, GetPlayerPed(player), -1, Config.ZombieDetectRange, Config.GoToSpeed, 1073741824, 0)
+					TaskGoToEntity(entity, GetPlayerPed(player), -1, 0.0, Config.GoToSpeed, 1073741824, 0)
 				end
 			end
 		end
@@ -466,8 +465,8 @@ Citizen.CreateThread(function()
 							local health = GetEntityHealth(playerPed)
 							local newHealth = math.min(maxHealth, math.floor(health - maxHealth))
 							SetEntityHealth(playerPed, newHealth)
-							Wait(2000)	
-							TaskGoToEntity(entity, GetPlayerPed(-1), -1, Config.ZombieDetectRange, Config.GoToSpeed, 1073741824, 0)
+							Wait(500)	
+							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, Config.GoToSpeed, 1073741824, 0)
 							--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, 0, 0,0)
 						end
 					end
