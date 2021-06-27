@@ -453,18 +453,23 @@ Citizen.CreateThread(function()
 	       	playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 			pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
 			if IsPedDeadOrDying(entity, 1) == 1 then
-				--none :v
+				SetEntityAsNoLongerNeeded(entity)
+				SetModelAsNoLongerNeeded(model)
+				DeleteEntity(entity)
+				table.remove(entitys, i)
 			else
 				if(Vdist(playerX, playerY, playerZ, pedX, pedY, pedZ) < 0.6)then
 					if IsPedRagdoll(entity, 1) ~= 1 then
 						if not IsPedGettingUp(entity) then
 							RequestAnimDict("misscarsteal4@actor")
-							TaskPlayAnim(entity,"misscarsteal4@actor","stumble",1.0, 1.0, 500, 9, 1.0, 0, 0, 0)
-							local playerPed = (GetPlayerPed(-1))
-							local maxHealth = GetEntityMaxHealth(playerPed)
-							local health = GetEntityHealth(playerPed)
-							local newHealth = math.min(maxHealth, math.floor(health - maxHealth))
-							SetEntityHealth(playerPed, newHealth)
+							--TaskPlayAnim(entity,"misscarsteal4@actor","stumble",1.0, 1.0, 500, 9, 1.0, 0, 0, 0)
+							--local playerPed = (GetPlayerPed(-1))
+							--local maxHealth = GetEntityMaxHealth(playerPed)
+							--local health = GetEntityHealth(playerPed)
+							--local newHealth = math.min(maxHealth, math.floor(health - maxHealth))
+							SetPlayerMeleeWeaponDamageModifier(entity, 100.0)
+							TaskCombatPed(entity,playerPed,0,16)
+							--SetEntityHealth(playerPed, newHealth)
 							Wait(1000)	
 							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, Config.ZombieGoToSpeed, 1073741824, 0)
 							--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, 0, 0,0)
@@ -578,6 +583,7 @@ AddEventHandler('esx_zombiesystem:clear', function()
 		local model = GetEntityModel(entity)
 		SetEntityAsNoLongerNeeded(entity)
 		SetModelAsNoLongerNeeded(model)
+		DeleteEntity(entity)
 		table.remove(entitys, i)
 		--Citizen.Trace("Zombie Eliminated\n")
 	end
