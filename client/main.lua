@@ -412,7 +412,7 @@ AddEventHandler("ZombieSync", function()
 					local model = GetEntityModel(entity)
 					SetEntityAsNoLongerNeeded(entity)
 					SetModelAsNoLongerNeeded(model)
-					--Citizen.Trace("Zombie Eliminated\n")
+					DeleteEntity(entity)
 					table.remove(entitys, i)
 				end
 			end
@@ -465,7 +465,7 @@ Citizen.CreateThread(function()
 							local health = GetEntityHealth(playerPed)
 							local newHealth = math.min(maxHealth, math.floor(health - maxHealth))
 							SetEntityHealth(playerPed, newHealth)
-							Wait(500)	
+							Wait(1000)	
 							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, Config.ZombieGoToSpeed, 1073741824, 0)
 							--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, 0, 0,0)
 						end
