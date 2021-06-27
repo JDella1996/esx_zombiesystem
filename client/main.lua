@@ -438,7 +438,7 @@ Citizen.CreateThread(function()
 				local distance = GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(player)), GetEntityCoords(entity), true)
 				if distance <= Config.ZombieDetectRange then
 					--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, -1, 0,0)
-					TaskGoToEntity(entity, GetPlayerPed(player), -1, 0.0, Config.GoToSpeed, 1073741824, 0)
+					TaskGoToEntity(entity, GetPlayerPed(player), -1, 0.0, Config.ZombieGoToSpeed, 1073741824, 0)
 				end
 			end
 		end
@@ -466,7 +466,7 @@ Citizen.CreateThread(function()
 							local newHealth = math.min(maxHealth, math.floor(health - maxHealth))
 							SetEntityHealth(playerPed, newHealth)
 							Wait(500)	
-							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, Config.GoToSpeed, 1073741824, 0)
+							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, Config.ZombieGoToSpeed, 1073741824, 0)
 							--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, 0, 0,0)
 						end
 					end
