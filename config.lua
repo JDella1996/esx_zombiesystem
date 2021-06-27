@@ -1,14 +1,13 @@
 Config = {}
 
-Config.SpawnZombie = 10
+Config.SpawnZombie = 25
 Config.MinSpawnDistance = 80
 Config.MaxSpawnDistance = 100
 Config.DespawnDistance = 120
-Config.ZombieMovementSpeed = 10.0
+Config.ZombieMovementSpeed = 20.0
 Config.ZombieDetectRange = 100.0
-Config.ZombieDamageMultipler = 100.0
-Config.GoToSpeed = 10.0
-Config.ZombieDropLoot = true
+Config.ZombieGoToSpeed = 60.0
+Config.ZombieDropLoot = false
 Config.ProbabilityWeaponLoot = 3 -- 3%
 Config.ProbabilityMoneyLoot = 33 -- 3-33 = 30%
 Config.ProbabilityItemLoot = 53 -- 53-43-3 = 7%
