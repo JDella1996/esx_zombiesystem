@@ -453,6 +453,7 @@ Citizen.CreateThread(function()
 	       	playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 			pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
 			if IsPedDeadOrDying(entity, 1) == 1 then
+				Wait(6000)
 				SetEntityAsNoLongerNeeded(entity)
 				SetModelAsNoLongerNeeded(model)
 				DeleteEntity(entity)
