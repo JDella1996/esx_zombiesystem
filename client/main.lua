@@ -580,6 +580,7 @@ end
 RegisterNetEvent('esx_zombiesystem:clear')
 AddEventHandler('esx_zombiesystem:clear', function()
 	for i, entity in pairs(entitys) do
+		Wait(10000)
 		local model = GetEntityModel(entity)
 		SetEntityAsNoLongerNeeded(entity)
 		SetModelAsNoLongerNeeded(model)
