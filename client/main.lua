@@ -499,7 +499,6 @@ if Config.ZombieDropLoot then
 				playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 				pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
 				if DoesEntityExist(entity) == false then
-					Wait(10000)
 					table.remove(entitys, i)
 				end
 				if IsPedDeadOrDying(entity, 1) == 1 then
