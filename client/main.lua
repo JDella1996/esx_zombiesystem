@@ -466,7 +466,7 @@ Citizen.CreateThread(function()
 							local newHealth = math.min(maxHealth, math.floor(health - maxHealth / 2))
 							SetEntityHealth(playerPed, newHealth)
 							Wait(2000)	
-							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, 1.0, 1073741824, 0)
+							TaskGoToEntity(entity, GetPlayerPed(-1), -1, 0.0, Config.ZombieGoToSpeed, 1073741824, 0)
 							--TaskGoStraightToCoord(entity, playerX, playerY, playerZ, 1.0, 0, 0,0)
 						end
 					end
